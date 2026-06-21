@@ -381,6 +381,21 @@ head.Next.Next = head.Next.Next.Next;  // 1 -> 2 -> 3
 
 **When to use:** When you need frequent inserts/deletes (especially at the head/middle) and don't need random access by index — e.g. implementing queues, stacks, or LRU caches.
 
+<br/>
+
+<sub>
+
+**Common problems where this is useful:**
+- `Reverse Linked List` — using three pointers (prev, curr, next) to flip the direction of each link
+- `Linked List Cycle` — detecting a cycle with the fast/slow pointer technique
+- `Middle of the Linked List` — finding the midpoint in one pass using fast/slow pointers
+- `Merge Two Sorted Lists` — merging using a dummy node to simplify edge cases
+- `Remove Nth Node From End of List` — using two pointers offset by n to find the target node in one pass
+- `Palindrome Linked List` — combining the fast/slow midpoint trick with in-place reversal
+- `LRU Cache` — combining a doubly linked list with a hash map for O(1) get/put
+
+</sub>
+
 
 > <sub>**Note: Singly vs Doubly Linked Lists**</sub>
 >
@@ -477,3 +492,219 @@ pX = nullptr;  // pX is no longer dangling
 
 <br/>
 <br/>
+
+## **Hash-Maps**
+A collection of key-value pairs, where each key maps to a value via a **hash function** that converts the key into an index into an internal array (the "buckets"). <sub>This is what makes lookups `O(1)` on average — instead of searching, the key's hash tells you almost exactly where to look.</sub>
+
+> <sub>Also known as `hash tables`, `dictionaries`, `maps`.
+> If multiple keys hash to the same bucket (a **collision**), they end up chained together in that bucket — turning lookups in that bucket back into a linear search. This is why worst-case time is `O(n)`, even though it's rare in practice with a good hash function.</sub>
+
+<br/>
+
+
+| ✅Pros | ❌Cons |
+|------|------|
+| Fast reads/searching/insert/delete (average case) | No ordering (in most implementations) |
+| | Worst-case `O(n)` if many collisions occur (but this is rare) |
+| | Extra memory overhead vs. an array |
+
+| Read | Insert | Delete |
+|------|--------|--------|
+|`O(1)` avg<br>`O(n)` worst|`O(1)` avg<br>`O(n)` worst|`O(1)` avg<br>`O(n)` worst|
+
+<br/>
+
+<details>
+<summary>Python</summary>
+
+```python
+d: dict[str, int] = {"a": 1, "b": 2}
+
+# Read - O(1) average
+val = d["a"]
+
+# Insert - O(1) average
+d["c"] = 3
+
+# Delete - O(1) average
+del d["a"]
+
+# Check if a key exists - O(1) average
+if "b" in d:
+    print("found")
+
+# Get with a default value (avoids a KeyError if missing)
+val = d.get("z", -1)  # -1, since "z" isn't in the dict
+
+# Iterate over keys and values
+for key, value in d.items():
+    print(key, value)
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <unordered_map>
+using namespace std;
+
+unordered_map<string, int> m = {{"a", 1}, {"b", 2}};
+
+// Read - O(1) average
+int val = m["a"];
+
+// Insert - O(1) average
+m["c"] = 3;
+
+// Delete - O(1) average
+m.erase("a");
+
+// Check if a key exists - O(1) average
+if (m.find("b") != m.end()) {
+    // found
+}
+// OR (C++20)
+if (m.contains("b")) {
+    // found
+}
+
+// Get with a default value (avoids inserting a new entry if missing)
+int val2 = m.count("z") ? m["z"] : -1;  // -1, since "z" isn't in the map
+
+// Iterate over keys and values
+for (const auto& [key, value] : m) {
+    // use key, value
+}
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.HashMap;
+
+HashMap<String, Integer> m = new HashMap<>();
+m.put("a", 1);
+m.put("b", 2);
+
+// Read - O(1) average
+int val = m.get("a");
+
+// Insert - O(1) average
+m.put("c", 3);
+
+// Delete - O(1) average
+m.remove("a");
+
+// Check if a key exists - O(1) average
+if (m.containsKey("b")) {
+    // found
+}
+
+// Get with a default value (avoids null if missing)
+int val2 = m.getOrDefault("z", -1);  // -1, since "z" isn't in the map
+
+// Iterate over keys and values
+for (Map.Entry<String, Integer> entry : m.entrySet()) {
+    String key = entry.getKey();
+    int value = entry.getValue();
+}
+```
+
+</details>
+
+<details>
+<summary>TypeScript</summary>
+
+```typescript
+const m: Map<string, number> = new Map([["a", 1], ["b", 2]]);
+
+// Read - O(1) average
+const val: number | undefined = m.get("a");
+
+// Insert - O(1) average
+m.set("c", 3);
+
+// Delete - O(1) average
+m.delete("a");
+
+// Check if a key exists - O(1) average
+if (m.has("b")) {
+    // found
+}
+
+// Get with a default value (avoids undefined if missing)
+const val2: number = m.get("z") ?? -1;  // -1, since "z" isn't in the map
+
+// Iterate over keys and values
+for (const [key, value] of m) {
+    // use key, value
+}
+```
+
+</details>
+
+<details>
+<summary>C#</summary>
+
+```csharp
+using System.Collections.Generic;
+
+Dictionary<string, int> m = new Dictionary<string, int> {
+    { "a", 1 },
+    { "b", 2 }
+};
+
+// Read - O(1) average
+int val = m["a"];
+
+// Insert - O(1) average
+m["c"] = 3;
+
+// Delete - O(1) average
+m.Remove("a");
+
+// Check if a key exists - O(1) average
+if (m.ContainsKey("b")) {
+    // found
+}
+
+// Get with a default value (avoids an exception if missing)
+int val2 = m.TryGetValue("z", out int found) ? found : -1;  // -1, since "z" isn't in the map
+
+// Iterate over keys and values
+foreach (KeyValuePair<string, int> entry in m) {
+    string key = entry.Key;
+    int value = entry.Value;
+}
+```
+
+</details>
+
+
+<br/>
+
+**When to use:** When you need fast lookups by key and don't care about ordering — e.g. counting frequencies, caching, deduplication, or grouping data.
+
+<br/>
+
+<sub>
+
+**Common problems where this is useful:**
+- `Two Sum` — checking if a complement value has been seen before, in one pass
+- `Group Anagrams` — grouping strings by a canonical key (e.g. sorted letters)
+- `Valid Anagram / Contains Duplicate` — counting character/element frequencies
+- `Longest Substring Without Repeating Characters` — tracking the last seen index of each character
+- `Subarray Sum Equals K` — storing running (prefix) sums to check for a target difference in O(1)
+- `LRU Cache` — combining a hash map with a doubly linked list for O(1) get/put
+- `Top K Frequent Elements` — counting frequencies, then bucketing/sorting by count
+
+</sub>
+
+<br/>
+<br/>
+
