@@ -37,6 +37,7 @@ Constraints:
 </ul>
 </details>
 
+<br/>
 
 ## **Solution**
 
@@ -49,6 +50,8 @@ Constraints:
   - If `x`'s absolute value is less than `closest` **OR** if both absolute values are the same *but* `x` is greater than the current `closest`:
     - Update `closest` to `x`, <sub>since a closer number (or a tie with a larger value) has been found.</sub>  
 - Finally, return `closest`.
+
+</br>
 
 ## **Code**
 
@@ -65,6 +68,7 @@ class Solution:
             
         return closest
 ```
+<br/>
 
 C++
 ```cpp

@@ -23,14 +23,17 @@
 - [**Leetcode Problems and Solutions**](./Leetcode%20Problems/README.md)
 
 <br/>
+<br/>
 
 # **Data Structures & When To Use Them**
+
 ## **Arrays/Lists**
 A collection of elements stored in **contiguous memory**, accessible by index.  
 > <sub>*Contiguous memory:* elements stored back-to-back with no gaps — e.g. `arr[0]` at address `1000`,
 > `arr[1]` at `1004`, `arr[2]` at `1008`. This is what makes index-based reads `O(1)` and insert/delete
 > at an index `O(n)`.</sub>
 
+<br/>
 
 | ✅Pros | ❌Cons |
 |------|------|
@@ -39,6 +42,8 @@ A collection of elements stored in **contiguous memory**, accessible by index.
 | Read | Insert (at index) | Insert (at end) | Delete (at index) | Delete (at end) |
 |------|--------|--------  |----             |----               |
 |`O(1)`|`O(n)`  |`O(1)` amortized |`O(n)`|`O(1)`|  
+
+<br/>
 
 **When to use:** When you need fast random access by index and don't need to frequently add/remove elements from the middle/front (e.g. lookup tables, fixed-size data, or building up a result by only appending).
 
@@ -149,6 +154,7 @@ arr.RemoveAt(2); // [1, 2, 3, 4, 5]
 
 </details>
 
+<br/>
 
 > <sub>**Note:** `std::vector` (C++) and `ArrayList` (Java) are dynamic arrays — they handle 
 > resizing for you, which is why this is more used in practice. Fixed-size raw 
@@ -156,13 +162,12 @@ arr.RemoveAt(2); // [1, 2, 3, 4, 5]
 > allocating new memory and copying everything over — which is *why* insert/delete is O(n).</sub>
 
 <br/>
-
-----
-
 <br/>
 
 ## **Linked-Lists**
 A chain of nodes, where each node holds a value and a [pointer](#pointers) to the next node in the sequence. <sub>(Also a pointer to the previous node if its a doubly linked list).</sub>
+
+<br/>
 
 | ✅Pros | ❌Cons |
 |------|------|
@@ -171,6 +176,8 @@ A chain of nodes, where each node holds a value and a [pointer](#pointers) to th
 | Read (by index) | Insert (at head) | Insert (at end) | Delete (at head) | Delete (at end) |
 |------|--------|--------  |----             |----               |
 |`O(n)`|`O(1)`  |`O(n)`* |`O(1)`|`O(n)`*|
+
+<br/>
 
 <sub>* Requires traversing from the head to find the position — unless a `tail` pointer is maintained, which makes insert at end `O(1)`. Delete at end stays `O(n)` even with a `tail` pointer, since a singly linked list can't go backward to find the second-to-last node.<sub>
 
@@ -370,6 +377,7 @@ head.Next.Next = head.Next.Next.Next;  // 1 -> 2 -> 3
 
 </details>
 
+<br/>
 
 **When to use:** When you need frequent inserts/deletes (especially at the head/middle) and don't need random access by index — e.g. implementing queues, stacks, or LRU caches.
 
@@ -465,3 +473,7 @@ pX = nullptr;  // pX is no longer dangling
 > dereference it, do pointer arithmetic, or get a dangling reference the way you can in C++. 
 > This is also why Python doesn't need `nullptr` checks the same way — the equivalent is checking 
 > `if node is None`.</sub>
+
+
+<br/>
+<br/>
