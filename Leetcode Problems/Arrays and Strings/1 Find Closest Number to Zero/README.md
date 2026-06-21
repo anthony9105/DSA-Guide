@@ -77,7 +77,7 @@ public:
     int findClosestNumber(vector<int>& nums) {
         int closestNum = nums[0];
 
-        for (int x : nums) {
+        for (const int& x : nums) {
             if (abs(x) < abs(closestNum) ||
                 abs(x) == abs(closestNum) && x > closestNum) {
                 closestNum = x;
