@@ -182,7 +182,7 @@ A chain of nodes, where each node holds a value and a [pointer](#pointers) to th
 
 <br/>
 
-<sub>* Requires traversing from the head to find the position — unless a `tail` pointer is maintained, which makes insert at end `O(1)`. Delete at end stays `O(n)` even with a `tail` pointer, since a singly linked list can't go backward to find the second-to-last node.<sub>
+<sub>* Requires traversing from the head to find the position — unless a `tail` pointer is maintained, which makes insert at end `O(1)`. Delete at end stays `O(n)` even with a `tail` pointer, since a singly linked list can't go backward to find the second-to-last node.</sub>
 
 <details>
 <summary>Python</summary>
@@ -386,18 +386,15 @@ head.Next.Next = head.Next.Next.Next;  // 1 -> 2 -> 3
 
 <br/>
 
-<sub>
 
 **Common problems where this is useful:**
-- `Reverse Linked List` — using three pointers (prev, curr, next) to flip the direction of each link
-- `Linked List Cycle` — detecting a cycle with the fast/slow pointer technique
-- `Middle of the Linked List` — finding the midpoint in one pass using fast/slow pointers
-- `Merge Two Sorted Lists` — merging using a dummy node to simplify edge cases
-- `Remove Nth Node From End of List` — using two pointers offset by n to find the target node in one pass
-- `Palindrome Linked List` — combining the fast/slow midpoint trick with in-place reversal
-- `LRU Cache` — combining a doubly linked list with a hash map for O(1) get/put
-
-</sub>
+- <sub>`Reverse Linked List` — using three pointers (prev, curr, next) to flip the direction of each link</sub>
+- <sub>`Linked List Cycle` — detecting a cycle with the fast/slow pointer technique</sub>
+- <sub>`Middle of the Linked List` — finding the midpoint in one pass using fast/slow pointers</sub>
+- <sub>`Merge Two Sorted Lists` — merging using a dummy node to simplify edge cases</sub>
+- <sub>`Remove Nth Node From End of List` — using two pointers offset by n to find the target node in one pass</sub>
+- <sub>`Palindrome Linked List` — combining the fast/slow midpoint trick with in-place reversal</sub>
+- <sub>`LRU Cache` — combining a doubly linked list with a hash map for O(1) get/put</sub>
 
 
 > <sub>**Note: Singly vs Doubly Linked Lists**</sub>
@@ -695,18 +692,16 @@ foreach (KeyValuePair<string, int> entry in m) {
 
 <br/>
 
-<sub>
 
 **Common problems where this is useful:**
-- `Two Sum` — checking if a complement value has been seen before, in one pass
-- `Group Anagrams` — grouping strings by a canonical key (e.g. sorted letters)
-- `Valid Anagram / Contains Duplicate` — counting character/element frequencies
-- `Longest Substring Without Repeating Characters` — tracking the last seen index of each character
-- `Subarray Sum Equals K` — storing running (prefix) sums to check for a target difference in O(1)
-- `LRU Cache` — combining a hash map with a doubly linked list for O(1) get/put
-- `Top K Frequent Elements` — counting frequencies, then bucketing/sorting by count
+- <sub>`Two Sum` — checking if a complement value has been seen before, in one pass</sub>
+- <sub>`Group Anagrams` — grouping strings by a canonical key (e.g. sorted letters)</sub>
+- <sub>`Valid Anagram / Contains Duplicate` — counting character/element frequencies</sub>
+- <sub>`Longest Substring Without Repeating Characters` — tracking the last seen index of each character</sub>
+- <sub>`Subarray Sum Equals K` — storing running (prefix) sums to check for a target difference in O(1)</sub>
+- <sub>`LRU Cache` — combining a hash map with a doubly linked list for O(1) get/put</sub>
+- <sub>`Top K Frequent Elements` — counting frequencies, then bucketing/sorting by count</sub>
 
-</sub>
 
 <br/>
 <br/>
@@ -870,17 +865,13 @@ foreach (int val in s) {
 
 <br/>
 
-<sub>
-
 **Common problems where this is useful:**
-- `Contains Duplicate` — checking if any value has already been seen
-- `Longest Consecutive Sequence` — O(1) lookups to check if the next/previous number exists
-- `Single Number` — using set operations to isolate non-duplicate values
-- `Intersection of Two Arrays` — using set intersection to find shared elements
-- `Linked List Cycle` — tracking visited nodes when not using the fast/slow pointer trick
-- `Word Break` — tracking which substrings are valid dictionary words
-
-</sub>
+- <sub>`Contains Duplicate` — checking if any value has already been seen</sub>
+- <sub>`Longest Consecutive Sequence` — O(1) lookups to check if the next/previous number exists</sub>
+- <sub>`Single Number` — using set operations to isolate non-duplicate values</sub>
+- <sub>`Intersection of Two Arrays` — using set intersection to find shared elements</sub>
+- <sub>`Linked List Cycle` — tracking visited nodes when not using the fast/slow pointer trick</sub>
+- <sub>`Word Break` — tracking which substrings are valid dictionary words</sub>
 
 <br/>
 <br/>
@@ -1033,18 +1024,14 @@ bool isEmpty = stack.Count == 0;
 
 <br/>
 
-<sub>
-
 **Common problems where this is useful:**
-- `Valid Parentheses` — pushing open brackets, popping and matching on close brackets
-- `Min Stack` — designing a stack that also tracks the minimum value in O(1)
-- `Evaluate Reverse Polish Notation` — pushing operands, popping two at a time to apply each operator
-- `Daily Temperatures` — using a stack to track indices while finding the next greater element
-- `Largest Rectangle in Histogram` — using a stack to track increasing bar heights
-- `Basic Calculator` — using a stack to handle nested parentheses in an expression
-- `Number of Islands` / `Clone Graph` — DFS traversal using an explicit stack (or recursion) to explore as deep as possible before backtracking
-
-</sub>
+- <sub>`Valid Parentheses` — pushing open brackets, popping and matching on close brackets</sub>
+- <sub>`Min Stack` — designing a stack that also tracks the minimum value in O(1)</sub>
+- <sub>`Evaluate Reverse Polish Notation` — pushing operands, popping two at a time to apply each operator</sub>
+- <sub>`Daily Temperatures` — using a stack to track indices while finding the next greater element</sub>
+- <sub>`Largest Rectangle in Histogram` — using a stack to track increasing bar heights</sub>
+- <sub>`Basic Calculator` — using a stack to handle nested parentheses in an expression</sub>
+- <sub>`Number of Islands` / `Clone Graph` — DFS traversal using an explicit stack (or recursion) to explore as deep as possible before backtracking</sub>
 
 <br/>
 <br/>
