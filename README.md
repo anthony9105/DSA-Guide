@@ -28,6 +28,7 @@
   - [**Graphs**](#graphs)
   - [**Heaps**](#heaps)
 - [**Leetcode Problems and Solutions**](./Leetcode%20Problems/README.md)
+- [**Key Algorithms**](./algorithms.md)
 
 <br/>
 <br/>
