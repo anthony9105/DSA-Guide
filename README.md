@@ -23,6 +23,10 @@
   - [**Hash-Maps**](#hash-maps)
   - [**Hash-Sets**](#hash-sets)
   - [**Stacks**](#stacks)
+  - [**Queues**](#queues)
+  - [**Trees**](#trees)
+  - [**Graphs**](#graphs)
+  - [**Heaps**](#heaps)
 - [**Leetcode Problems and Solutions**](./Leetcode%20Problems/README.md)
 
 <br/>
