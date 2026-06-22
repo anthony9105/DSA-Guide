@@ -1,11 +1,17 @@
 <h1 align="center" style="font-size: 40px">Key Algorithms</h1>
 
 ## Contents
-- [**Binary Search**](#binary-search)
+- [Searching/Traversal](#searchingtraversal)
+  - [**Binary Search**](#binary-search)
+  - [**DFS (Depth-First Search)**](#dfs-depth-first-search)
+  - [**BFS (Breadth-First Search)**](#bfs-breadth-first-search)
+- [Sorting](#sorting) 
+  - [Bubble Sort (Bad)](#bubble-sort-bad) 
 
 
 <br/>
 
+# Searching/Traversal
 ## **Binary Search**
 A search algorithm that finds a target in a **sorted** collection by repeatedly halving the search space.  Compare the middle element, then discard the half that can't contain the target. This is what makes it extremely fast: `O(log n)`.</sub>
 
@@ -598,3 +604,162 @@ List<int> Bfs(Dictionary<int, List<int>> graph, int start) {
 
 <br/>
 <br/>
+
+# Sorting
+## **Bubble Sort (Bad)**
+A sorting algorithm that repeatedly steps through the list, **swapping adjacent elements** if they're in the wrong order — each pass "bubbles" the largest unsorted element to its correct position at the end. <sub>Named for how larger elements rise to the top of the list with each pass, like bubbles in water.</sub>
+
+> <sub>Mostly used for teaching sorting concepts, it's pretty much never the right choice in practice due to its poor time complexity.</sub>
+
+<br/>
+
+| ✅Pros | ❌Cons |
+|------|------|
+| Very simple to understand and implement | `O(n²)` — way too slow |
+| In-place (no extra memory needed) | Almost never used in practice over faster alternatives |
+| Stable (preserves the relative order of equal elements) | |
+
+| Best Case | Average Case | Worst Case | Space |
+|------|------|------|------|
+|`O(n)`|`O(n²)`|`O(n²)`|`O(1)`|
+
+<br/>
+
+<sub>* Best case (`O(n)`) occurs when the list is already sorted, if an early-exit check is included (stop once a full pass makes no swaps).</sub>
+
+<details>
+<summary>Python</summary>
+
+```python
+def bubble_sort(nums: list[int]) -> list[int]:
+    n = len(nums)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n - i - 1):
+            if nums[j] > nums[j + 1]:
+                nums[j], nums[j + 1] = nums[j + 1], nums[j]
+                swapped = True
+        if not swapped:
+            break  # already sorted, exit early
+    return nums
+
+nums = [5, 1, 4, 2, 8]
+sorted_nums = bubble_sort(nums)  # [1, 2, 4, 5, 8]
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <vector>
+using namespace std;
+
+void bubbleSort(vector<int>& nums) {
+    int n = nums.size();
+    for (int i = 0; i < n; i++) {
+        bool swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (nums[j] > nums[j + 1]) {
+                swap(nums[j], nums[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) break; // already sorted, exit early
+    }
+}
+
+vector<int> nums = {5, 1, 4, 2, 8};
+bubbleSort(nums); // {1, 2, 4, 5, 8}
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+void bubbleSort(int[] nums) {
+    int n = nums.length;
+    for (int i = 0; i < n; i++) {
+        boolean swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (nums[j] > nums[j + 1]) {
+                int temp = nums[j];
+                nums[j] = nums[j + 1];
+                nums[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (!swapped) break; // already sorted, exit early
+    }
+}
+
+int[] nums = {5, 1, 4, 2, 8};
+bubbleSort(nums); // {1, 2, 4, 5, 8}
+```
+
+</details>
+
+<details>
+<summary>TypeScript</summary>
+
+```typescript
+function bubbleSort(nums: number[]): number[] {
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        let swapped = false;
+        for (let j = 0; j < n - i - 1; j++) {
+            if (nums[j] > nums[j + 1]) {
+                [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+                swapped = true;
+            }
+        }
+        if (!swapped) break; // already sorted, exit early
+    }
+    return nums;
+}
+
+const nums: number[] = [5, 1, 4, 2, 8];
+const sortedNums: number[] = bubbleSort(nums); // [1, 2, 4, 5, 8]
+```
+
+</details>
+
+<details>
+<summary>C#</summary>
+
+```csharp
+void BubbleSort(int[] nums) {
+    int n = nums.Length;
+    for (int i = 0; i < n; i++) {
+        bool swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (nums[j] > nums[j + 1]) {
+                (nums[j], nums[j + 1]) = (nums[j + 1], nums[j]);
+                swapped = true;
+            }
+        }
+        if (!swapped) break; // already sorted, exit early
+    }
+}
+
+int[] nums = { 5, 1, 4, 2, 8 };
+BubbleSort(nums); // { 1, 2, 4, 5, 8 }
+```
+
+</details>
+
+<br/>
+
+**When to use:** Rarely in practice — mostly useful for understanding sorting fundamentals, or in situations where simplicity matters more than performance on very small datasets.
+
+<br/>
+
+**Common problems where this is useful:**
+- <sub>Rarely asked directly — but understanding it builds intuition for swap-based logic used in problems like `Sort Colors` (Dutch National Flag)</sub>
+
+<br/>
+<br/>
+
