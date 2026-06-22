@@ -1,6 +1,6 @@
 <p align="center">
   <img src="../../LC_logo.png" alt="Leetcode Logo" height="100px"/>
-  <h1 align="center" style="font-size: 35px"><a href="https://leetcode.com/problems/is-subsequence/description/" target="_blank" rel="noreferrer">4. Is Subsequence</a></h1>
+  <h1 align="center" style="font-size: 35px"><a href="https://leetcode.com/problems/is-subsequence/description/" target="_blank" rel="noreferrer">392. Is Subsequence</a></h1>
 </p>
 
 <p align="center">
