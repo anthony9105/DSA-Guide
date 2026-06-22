@@ -1,6 +1,6 @@
 <p align="center">
   <img src="../../LC_logo.png" alt="Leetcode Logo" height="100px"/>
-  <a href="https://leetcode.com/problems/find-closest-number-to-zero/description/"><h1 align="center" style="font-size: 35px">2239. Find Number Closest to Zero</h1></a>
+  <h1 align="center" style="font-size: 35px"><a href="https://leetcode.com/problems/find-closest-number-to-zero/description/">2239. Find Number Closest to Zero</a></h1>
 </p>
 
 <p align="center">

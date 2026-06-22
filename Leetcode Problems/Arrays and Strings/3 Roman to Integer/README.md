@@ -1,6 +1,6 @@
 <p align="center">
   <img src="../../LC_logo.png" alt="Leetcode Logo" height="100px"/>
-  <a href="https://leetcode.com/problems/roman-to-integer/"><h1 align="center" style="font-size: 35px">13. Roman to Integer</h1></a>
+  <h1 align="center" style="font-size: 35px"><a href="https://leetcode.com/problems/roman-to-integer/">13. Roman to Integer</a></h1>
 </p>
 
 <p align="center">
