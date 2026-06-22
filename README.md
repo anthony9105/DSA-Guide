@@ -29,8 +29,8 @@
 
 ## **Arrays/Lists**
 A collection of elements stored in **contiguous memory**, accessible by index.  
-> <sub>*Contiguous memory:* elements stored back-to-back with no gaps — e.g. `arr[0]` at address `1000`,
-> `arr[1]` at `1004`, `arr[2]` at `1008`. This is what makes index-based reads `O(1)` and insert/delete
+> <sub>*Contiguous memory:* elements stored back-to-back with no gaps (e.g. `arr[0]` at address `1000`,
+> `arr[1]` at `1004`, `arr[2]` at `1008`). This is what makes index-based reads `O(1)` and insert/delete
 > at an index `O(n)`.</sub>
 
 <br/>
@@ -159,7 +159,7 @@ arr.RemoveAt(2); // [1, 2, 3, 4, 5]
 > <sub>**Note:** `std::vector` (C++) and `ArrayList` (Java) are dynamic arrays — they handle 
 > resizing for you, which is why this is more used in practice. Fixed-size raw 
 > arrays (`int arr[]`, Java `int[]`) exist too, but resizing them manually requires 
-> allocating new memory and copying everything over — which is *why* insert/delete is O(n).</sub>
+> allocating new memory and copying everything over, which is *why* insert/delete is O(n).</sub>
 
 <br/>
 <br/>
@@ -379,7 +379,7 @@ head.Next.Next = head.Next.Next.Next;  // 1 -> 2 -> 3
 
 <br/>
 
-**When to use:** When you need frequent inserts/deletes (especially at the head/middle) and don't need random access by index — e.g. implementing queues, stacks, or LRU caches.
+**When to use:** When you need frequent inserts/deletes (especially at the head/middle) and don't need random access by index (e.g. implementing queues, stacks, or LRU caches).
 
 <br/>
 
@@ -451,9 +451,9 @@ int y = *pX;
 
 **Null pointers**
 
-A pointer set to `nullptr` points to nothing — dereferencing it is undefined behavior and a common source of crashes. This is exactly why linked list code so often checks `if (node != nullptr)` before accessing `node->val`.
+A pointer set to `nullptr` points to nothing.  Dereferencing it is undefined behavior and a common source of crashes. This is exactly why linked list code so often checks `if (node != nullptr)` before accessing `node->val`.
 
-In a linked list specifically, the **last node's `next` pointer is always `nullptr`** — that's the signal that traversal has reached the end of the list.
+In a linked list specifically, the **last node's `next` pointer is always `nullptr`**, that indicates that traversal has reached the end of the list.
 
 ```cpp
 int* pX = nullptr;
@@ -463,14 +463,14 @@ int* pX = nullptr;
 
 **Dangling pointers**
 
-Calling `delete` on a pointer frees the memory it points to, but doesn't erase the pointer variable itself — it still holds the old address. Using it afterward (a "dangling pointer") is undefined behavior.
+Calling `delete` on a pointer frees the memory it points to, but doesn't erase the pointer variable itself, it still holds the old address. Using it afterward (a "dangling pointer") is undefined behavior.
 
 ```cpp
 int* pX = new int(4);
 delete pX;
 // pX is now dangling — using *pX here is undefined behavior
 ```
-To avoid this, set the pointer to `nullptr` immediately after deleting it. Dereferencing a `nullptr` will still crash, but it crashes loudly and immediately — instead of silently reading/writing to memory that something else may have already reused.
+To avoid this, set the pointer to `nullptr` immediately after deleting it. Dereferencing a `nullptr` will still crash, but it crashes loudly and immediately instead of silently reading/writing to memory that something else may have already reused.
 
 ```cpp
 int* pX = new int(4);
@@ -481,7 +481,7 @@ pX = nullptr;  // pX is no longer dangling
 <br/>
 
 
-**When to use:** Whenever you need to reference or modify data without copying it, or link separate pieces of memory together — e.g. linked list/tree nodes, passing large objects to functions without copying them, or dynamic memory allocation.
+**When to use:** Whenever you need to reference or modify data without copying it, or link separate pieces of memory together (e.g. linked list/tree nodes, passing large objects to functions without copying them, or dynamic memory allocation).
 
 > <sub>**Note:** Python doesn't expose raw pointers or memory addresses the way C++ does — every 
 > variable in Python is already a reference to an object under the hood, but you can't 
@@ -494,7 +494,7 @@ pX = nullptr;  // pX is no longer dangling
 <br/>
 
 ## **Hash-Maps**
-A collection of key-value pairs, where each key maps to a value via a **hash function** that converts the key into an index into an internal array (the "buckets"). <sub>This is what makes lookups `O(1)` on average — instead of searching, the key's hash tells you almost exactly where to look.</sub>
+A collection of key-value pairs, where each key maps to a value via a **hash function** that converts the key into an index into an internal array (the "buckets"). <sub>This is what makes lookups `O(1)` on average.  Instead of searching, the key's hash tells you almost exactly where to look.</sub>
 
 > <sub>Also known as `hash tables`, `dictionaries`, `maps`.
 > If multiple keys hash to the same bucket (a **collision**), they end up chained together in that bucket — turning lookups in that bucket back into a linear search. This is why worst-case time is `O(n)`, even though it's rare in practice with a good hash function.</sub>
@@ -688,7 +688,7 @@ foreach (KeyValuePair<string, int> entry in m) {
 
 <br/>
 
-**When to use:** When you need fast lookups by key and don't care about ordering — e.g. counting frequencies, caching, deduplication, or grouping data.
+**When to use:** When you need fast lookups by key and don't care about ordering (e.g. counting frequencies, caching, deduplication, or grouping data).
 
 <br/>
 
@@ -708,3 +708,176 @@ foreach (KeyValuePair<string, int> entry in m) {
 <br/>
 <br/>
 
+## **Hash-Sets**
+A collection of **unique** values, with no associated key — built on the same hashing mechanism as a hash map, but storing only the value itself (used purely to track membership). <sub>This is what makes lookups `O(1)` on average, the value's hash tells you almost exactly where to look, the same way it does in a hash map.</sub>
+
+> <sub>Also known as `sets`.
+> Functionally, a hash set behaves like a hash map where every key maps to nothing (or a dummy value) — same collision/bucket mechanism, same `O(n)` worst case if many values hash to the same bucket.</sub>
+
+<br/>
+
+| ✅Pros | ❌Cons |
+|------|------|
+| Fast membership checks/insert/delete (average case) | No ordering (in most implementations) |
+| Automatically removes duplicates | Worst-case `O(n)` if many collisions occur (but this is rare) |
+| | Can't store duplicate values, or associate a value with extra data |
+
+| Contains | Insert | Delete |
+|------|--------|--------|
+|`O(1)` avg<br>`O(n)` worst|`O(1)` avg<br>`O(n)` worst|`O(1)` avg<br>`O(n)` worst|
+
+<br/>
+
+<details>
+<summary>Python</summary>
+
+```python
+s: set[int] = {1, 2, 3}
+
+# Contains - O(1) average
+found = 2 in s
+
+# Insert - O(1) average
+s.add(4)
+
+# Delete - O(1) average
+s.remove(1)
+
+# Union, intersection, difference
+a = {1, 2, 3}
+b = {2, 3, 4}
+union = a | b         # {1, 2, 3, 4}
+intersection = a & b  # {2, 3}
+difference = a - b    # {1}
+
+# Iterate over values
+for val in s:
+    print(val)
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <unordered_set>
+using namespace std;
+
+unordered_set<int> s = {1, 2, 3};
+
+// Contains - O(1) average
+bool found = s.find(2) != s.end();
+// OR (C++20)
+bool found2 = s.contains(2);
+
+// Insert - O(1) average
+s.insert(4);
+
+// Delete - O(1) average
+s.erase(1);
+
+// Iterate over values
+for (int val : s) {
+    // use val
+}
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.HashSet;
+
+HashSet<Integer> s = new HashSet<>();
+s.add(1);
+s.add(2);
+s.add(3);
+
+// Contains - O(1) average
+boolean found = s.contains(2);
+
+// Insert - O(1) average
+s.add(4);
+
+// Delete - O(1) average
+s.remove(1);
+
+// Iterate over values
+for (int val : s) {
+    // use val
+}
+```
+
+</details>
+
+<details>
+<summary>TypeScript</summary>
+
+```typescript
+const s: Set<number> = new Set([1, 2, 3]);
+
+// Contains - O(1) average
+const found: boolean = s.has(2);
+
+// Insert - O(1) average
+s.add(4);
+
+// Delete - O(1) average
+s.delete(1);
+
+// Iterate over values
+for (const val of s) {
+    // use val
+}
+```
+
+</details>
+
+<details>
+<summary>C#</summary>
+
+```csharp
+using System.Collections.Generic;
+
+HashSet<int> s = new HashSet<int> { 1, 2, 3 };
+
+// Contains - O(1) average
+bool found = s.Contains(2);
+
+// Insert - O(1) average
+s.Add(4);
+
+// Delete - O(1) average
+s.Remove(1);
+
+// Iterate over values
+foreach (int val in s) {
+    // use val
+}
+```
+
+</details>
+
+<br/>
+
+**When to use:** When you only care whether something exists, not what it's associated with (e.g. deduplication, fast membership checks, or tracking visited/seen items).
+
+<br/>
+
+<sub>
+
+**Common problems where this is useful:**
+- `Contains Duplicate` — checking if any value has already been seen
+- `Longest Consecutive Sequence` — O(1) lookups to check if the next/previous number exists
+- `Single Number` — using set operations to isolate non-duplicate values
+- `Intersection of Two Arrays` — using set intersection to find shared elements
+- `Linked List Cycle` — tracking visited nodes when not using the fast/slow pointer trick
+- `Word Break` — tracking which substrings are valid dictionary words
+
+</sub>
+
+<br/>
+<br/>
