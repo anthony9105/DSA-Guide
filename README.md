@@ -1035,3 +1035,168 @@ bool isEmpty = stack.Count == 0;
 
 <br/>
 <br/>
+
+## **Queues**
+A collection of elements where access is restricted to **both ends** — items are added at the **back** and removed from the **front**. Items are processed in **FIFO** order (First In, First Out), like a line at a store: whoever joined first gets served first. <sub>Most implementations are built on top of a doubly linked list or a circular buffer, since both ends need fast access.</sub>
+
+> <sub>It's the underlying mechanism behind **BFS (Breadth-First Search)** on trees and graphs — each level is fully processed before moving to the next, which is exactly FIFO behavior. (Compare this to Stacks, which power DFS instead.)</sub>
+
+<br/>
+
+| ✅Pros | ❌Cons |
+|------|------|
+| Fast push/pop from each end | No random access, can't read/modify the middle without removing everything in front of it |
+| Maintains insertion order naturally | A plain array-based queue is `O(n)` to dequeue, unless implemented carefully |
+
+| Enqueue | Dequeue | Peek |
+|------|-----|------|
+|`O(1)`|`O(1)`|`O(1)`|
+
+<br/>
+
+<sub>* `O(1)` here assumes a proper queue implementation (doubly linked list or circular buffer). Using a plain array/list and removing from the front (`pop(0)` in Python, `shift()` in JS) is `O(n)`, since every remaining element has to shift over.</sub>
+
+<details>
+<summary>Python</summary>
+
+```python
+from collections import deque
+
+q: deque[int] = deque()
+
+# Enqueue - O(1)
+q.append(1)
+q.append(2)
+q.append(3)
+
+# Dequeue - O(1)
+front = q.popleft()  # 1, queue is now [2, 3]
+
+# Peek - O(1)
+front2 = q[0]  # 2
+
+# Check if empty
+is_empty = len(q) == 0
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <queue>
+using namespace std;
+
+queue<int> q;
+
+// Enqueue - O(1)
+q.push(1);
+q.push(2);
+q.push(3);
+
+// Dequeue - O(1)
+int front = q.front();
+q.pop();  // removes 1, queue is now {2, 3}
+
+// Peek - O(1)
+int front2 = q.front();  // 2
+
+// Check if empty
+bool isEmpty = q.empty();
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Queue;
+import java.util.LinkedList;
+
+Queue<Integer> q = new LinkedList<>();
+
+// Enqueue - O(1)
+q.offer(1);
+q.offer(2);
+q.offer(3);
+
+// Dequeue - O(1)
+int front = q.poll();  // 1, queue is now [2, 3]
+
+// Peek - O(1)
+int front2 = q.peek();  // 2
+
+// Check if empty
+boolean isEmpty = q.isEmpty();
+```
+
+</details>
+
+<details>
+<summary>TypeScript</summary>
+
+```typescript
+// TypeScript has no built-in queue - an array works, but shift() is O(n)
+// Shown here for simplicity; use a proper Deque class for true O(1) behavior
+const q: number[] = [];
+
+// Enqueue - O(1)
+q.push(1);
+q.push(2);
+q.push(3);
+
+// Dequeue - O(n), since every remaining element shifts over
+const front: number | undefined = q.shift();  // 1, queue is now [2, 3]
+
+// Peek - O(1)
+const front2: number = q[0];  // 2
+
+// Check if empty
+const isEmpty: boolean = q.length === 0;
+```
+
+</details>
+
+<details>
+<summary>C#</summary>
+
+```csharp
+using System.Collections.Generic;
+
+Queue<int> q = new Queue<int>();
+
+// Enqueue - O(1)
+q.Enqueue(1);
+q.Enqueue(2);
+q.Enqueue(3);
+
+// Dequeue - O(1)
+int front = q.Dequeue();  // 1, queue is now [2, 3]
+
+// Peek - O(1)
+int front2 = q.Peek();  // 2
+
+// Check if empty
+bool isEmpty = q.Count == 0;
+```
+
+</details>
+
+<br/>
+
+**When to use:** When you need to process things in the order they arrived (e.g. BFS traversal, task scheduling, buffering data between producers/consumers).
+
+<br/>
+
+**Common problems where this is useful:**
+- <sub>`Binary Tree Level Order Traversal` — BFS using a queue to process one level at a time</sub>
+- <sub>`Rotting Oranges` — multi-source BFS to find the time for a state to spread</sub>
+- <sub>`Number of Islands` (BFS variant) — using a queue instead of a stack/recursion to explore each island</sub>
+- <sub>`Course Schedule` — BFS-based topological sort (Kahn's algorithm) using a queue of zero-indegree nodes</sub>
+- <sub>`Sliding Window Maximum` — a monotonic deque to track the max in O(1) per window</sx>
+- <sub>`Design Circular Queue` — implementing fixed-size queue behavior directly</sub>
+
+<br/>
+<br/>
