@@ -20,6 +20,9 @@
   - [**Arrays/Lists**](#arrayslists)
   - [**Linked-Lists**](#linked-lists)
     - [**Pointers**](#pointers)
+  - [**Hash-Maps**](#hash-maps)
+  - [**Hash-Sets**](#hash-sets)
+  - [**Stacks**](#stacks)
 - [**Leetcode Problems and Solutions**](./Leetcode%20Problems/README.md)
 
 <br/>
@@ -876,6 +879,170 @@ foreach (int val in s) {
 - `Intersection of Two Arrays` — using set intersection to find shared elements
 - `Linked List Cycle` — tracking visited nodes when not using the fast/slow pointer trick
 - `Word Break` — tracking which substrings are valid dictionary words
+
+</sub>
+
+<br/>
+<br/>
+
+## **Stacks**
+A collection of elements where access is restricted to one end — the **top**. Items are added and removed in **LIFO** order (Last In, First Out), like a stack of plates: you can only take from the top, and the last plate you put on is the first one you take off. It's the underlying mechanism behind **DFS (Depth-First Search)** on trees and graphs, whether using an explicit stack, or recursion (recursive call stack). <sub>Most implementations are built on top of a dynamic array or linked list, so the underlying complexity is inherited from whichever one is used.</sub>
+
+> <sub>The call stack your code runs on (function calls, recursion) is a real-world example of this — each function call is "pushed" on entry and "popped" on return, which is also why deep recursion can cause a stack overflow.</sub>
+
+<br/>
+
+| ✅Pros | ❌Cons |
+|------|------|
+| Fast push/pop from the top | No random access — can't read/modify the middle without removing everything above it |
+| Simple to implement | Only the top element is ever accessible |
+
+| Push | Pop | Peek |
+|------|-----|------|
+|`O(1)`|`O(1)`|`O(1)`|
+
+<br/>
+
+<details>
+<summary>Python</summary>
+
+```python
+stack: list[int] = []
+
+# Push - O(1)
+stack.append(1)
+stack.append(2)
+stack.append(3)
+
+# Pop - O(1)
+top = stack.pop()  # 3, stack is now [1, 2]
+
+# Peek - O(1)
+top = stack[-1]  # 2
+
+# Check if empty
+is_empty = len(stack) == 0
+```
+
+</details>
+
+<details>
+<summary>C++</summary>
+
+```cpp
+#include <stack>
+using namespace std;
+
+stack<int> s;
+
+// Push - O(1)
+s.push(1);
+s.push(2);
+s.push(3);
+
+// Pop - O(1)
+int top = s.top();
+s.pop();  // removes 3, stack is now {1, 2}
+
+// Peek - O(1)
+int top2 = s.top();  // 2
+
+// Check if empty
+bool isEmpty = s.empty();
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Deque;
+import java.util.ArrayDeque;
+
+Deque<Integer> stack = new ArrayDeque<>();
+
+// Push - O(1)
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+// Pop - O(1)
+int top = stack.pop();  // 3, stack is now [1, 2]
+
+// Peek - O(1)
+int top2 = stack.peek();  // 2
+
+// Check if empty
+boolean isEmpty = stack.isEmpty();
+```
+
+</details>
+
+<details>
+<summary>TypeScript</summary>
+
+```typescript
+const stack: number[] = [];
+
+// Push - O(1)
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+// Pop - O(1)
+const top: number | undefined = stack.pop();  // 3, stack is now [1, 2]
+
+// Peek - O(1)
+const top2: number = stack[stack.length - 1];  // 2
+
+// Check if empty
+const isEmpty: boolean = stack.length === 0;
+```
+
+</details>
+
+<details>
+<summary>C#</summary>
+
+```csharp
+using System.Collections.Generic;
+
+Stack<int> stack = new Stack<int>();
+
+// Push - O(1)
+stack.Push(1);
+stack.Push(2);
+stack.Push(3);
+
+// Pop - O(1)
+int top = stack.Pop();  // 3, stack is now [1, 2]
+
+// Peek - O(1)
+int top2 = stack.Peek();  // 2
+
+// Check if empty
+bool isEmpty = stack.Count == 0;
+```
+
+</details>
+
+<br/>
+
+**When to use:** When you need to process or undo things in reverse order of how they were added (e.g. matching/validating pairs, backtracking, or tracking the most recent unresolved item).
+
+<br/>
+
+<sub>
+
+**Common problems where this is useful:**
+- `Valid Parentheses` — pushing open brackets, popping and matching on close brackets
+- `Min Stack` — designing a stack that also tracks the minimum value in O(1)
+- `Evaluate Reverse Polish Notation` — pushing operands, popping two at a time to apply each operator
+- `Daily Temperatures` — using a stack to track indices while finding the next greater element
+- `Largest Rectangle in Histogram` — using a stack to track increasing bar heights
+- `Basic Calculator` — using a stack to handle nested parentheses in an expression
+- `Number of Islands` / `Clone Graph` — DFS traversal using an explicit stack (or recursion) to explore as deep as possible before backtracking
 
 </sub>
 
