@@ -11,3 +11,5 @@
 | 3 | [13. Roman to Integer](./3%20Roman%20to%20Integer/README.md) | 🟢 Easy | [Hash-Maps](../../README.md#hash-maps) |
 | 4 | [392. Is Subsequence](./4%20Is%20Subsequence/README.md) | 🟢 Easy | - |
 | 5 | [121. Best Time to Buy and Sell Stock](./5%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/README.md) | 🟢 Easy | - |
+| 6 | [14. Longest Common Prefix](./6%20Longest%20Common%20Prefix/README.md) | 🟢 Easy | - |
+| 7 | [228. Summary Ranges](./7%20Summary%20Ranges/README.md) | 🟢 Easy | - |
