@@ -13,3 +13,4 @@
 | 5 | [121. Best Time to Buy and Sell Stock](./5%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/README.md) | 🟢 Easy | - |
 | 6 | [14. Longest Common Prefix](./6%20Longest%20Common%20Prefix/README.md) | 🟢 Easy | - |
 | 7 | [228. Summary Ranges](./7%20Summary%20Ranges/README.md) | 🟢 Easy | - |
+| 8 | [238. Product of Array Except Self](./8%20Product%20of%20Array%20Except%20Self/README.md) | 🟡 Medium | Prefix sum |

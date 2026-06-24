@@ -21,7 +21,7 @@ import os
 
 DIFFICULTY_COLORS = {
     "Easy": "brightgreen",
-    "Medium": "orange",
+    "Medium": "F5A623",
     "Hard": "red",
 }
 
