@@ -50,11 +50,14 @@ Constraints:
 | `O(n²)` | `O(1)` |
 
 - Transpose the matrix (swap the elements across the diagonal from top left to bottom right)
+  
   <img src="./img1.png" height="200" style="margin:0px; padding:0px;" alt="matrix">
+  
   - We'd end up with: 
   
     <img src="./img2.png" height="200" style="margin:0px; padding:0px;" alt="matrix2">
 - Now reverse these rows, or another way to look at it is to reflect each row horizontally:
+  
   <img src="./img3.1.png" height="200" style="margin:0px; padding:0px;" alt="matrix3.1"> <img src="./img3.2.png" height="200" style="margin:0px; padding:0px;" alt="matrix3.2">
 - Finally we end up with:
   
