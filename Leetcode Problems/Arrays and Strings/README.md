@@ -15,5 +15,5 @@
 | 7 | [228. Summary Ranges](./7%20Summary%20Ranges/README.md) | 🟢 Easy | - |
 | 8 | [238. Product of Array Except Self](./8%20Product%20of%20Array%20Except%20Self/README.md) | 🟡 Medium | Prefix sum |
 | 9 | [56. Merge Intervals](./9%20Merge%20Intervals/README.md) | 🟡 Medium | Sorting |
-| 10 | [54. Spiral Matrix]() | 🟡 Medium |  |
+| 10 | [54. Spiral Matrix](./10%20Spiral%20Matrix/README.md) | 🟡 Medium | Matrix |
 | 11 | [48. Rotate Image]() | 🟡 Medium |  |
