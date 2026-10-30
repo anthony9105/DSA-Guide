@@ -7,7 +7,7 @@
 | # | Problem | Difficulty | Other Topics |
 |:---:|---------|------------|--------------|
 | 1 | [771. Jewels and Stones](./1%20Jewels%20and%20Stones/README.md) | 🟢 Easy | Strings |
-| 2 | [217. Contains Duplicates]() | 🟢 Easy |  |
+| 2 | [217. Contains Duplicates](./2%20Contains%20Duplicate/README.md) | 🟢 Easy |  |
 | 3 | [383. Ransom Note]() | 🟢 Easy |  |
 | 4 | [242. Valid Anogram]() | 🟢 Easy |  |
 | 5 | [1189. Maximum Number of Balloons]() | 🟢 Easy |  |
