@@ -31,7 +31,7 @@
 | 1 | [771. Jewels and Stones](./Hashmaps%20and%20Sets/1%20Jewels%20and%20Stones/README.md) | 🟢 Easy | Strings |
 | 2 | [217. Contains Duplicates](./Hashmaps%20and%20Sets/2%20Contains%20Duplicate/README.md) | 🟢 Easy |  |
 | 3 | [383. Ransom Note](./Hashmaps%20and%20Sets/3%20Ransom%20Note/README.md) | 🟢 Easy | Strings |
-| 4 | [242. Valid Anogram]() | 🟢 Easy |  |
+| 4 | [242. Valid Anogram](./Hashmaps%20and%20Sets/4%20Valid%20Anagram/README.md) | 🟢 Easy | Strings |
 | 5 | [1189. Maximum Number of Balloons]() | 🟢 Easy |  |
 | 6 | [1. Two Sum]() | 🟡 Medium |  |
 | 7 | [36. Valid Sudoku]() | 🟡 Medium |  |

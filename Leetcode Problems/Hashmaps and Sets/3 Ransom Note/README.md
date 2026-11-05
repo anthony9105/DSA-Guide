@@ -42,7 +42,7 @@ Constraints:
 
 | Time | Space |
 |------|-------|
-| `O(m + n)` | `O()` |
+| `O(m + n)` | `O(m)` |
 
 <sub>Where `m` is the length of `magazine` and `n` is the length of `ransomNote`.</sub>
 
