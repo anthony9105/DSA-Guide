@@ -10,7 +10,7 @@
 | 2 | [217. Contains Duplicates](./2%20Contains%20Duplicate/README.md) | 🟢 Easy |  |
 | 3 | [383. Ransom Note](./3%20Ransom%20Note/README.md) | 🟢 Easy | Strings |
 | 4 | [242. Valid Anogram](./4%20Valid%20Anagram/README.md) | 🟢 Easy | Strings |
-| 5 | [1189. Maximum Number of Balloons]() | 🟢 Easy |  |
+| 5 | [1189. Maximum Number of Balloons](./5%20Maximum%20Number%20of%20Balloons/README.md) | 🟢 Easy | Strings |
 | 6 | [1. Two Sum]() | 🟡 Medium |  |
 | 7 | [36. Valid Sudoku]() | 🟡 Medium |  |
 | 8 | [49. Group Anagrams]() | 🟡 Medium |  |
