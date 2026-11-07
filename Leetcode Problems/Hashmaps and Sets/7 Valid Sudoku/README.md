@@ -85,7 +85,14 @@ Constraints:
 
 </br>
 
-- { TODO: explain approach, step by step }
+- Create 3 lists of sets for each row, column, and sub-box.  So 9 sets for rows, 9 sets for columns, 9 sets for the sub-boxes.
+- For each index `i` (0-8) of the 9 rows:
+  - For each index `j` (0-8) of the 9 columns:
+    - If the current cell is `.` skip the iteration and continue to the next one.
+    - Calculate the sub-box index.
+    - If either of the 3 corresponding sets already contains the current character `num`, return false.  (Because this means there's a duplicate in either the row, column, or sub-box).
+    -  Otherwise: add the current character to each of the corresponding 3 sets.
+- Return true.
 
 <br/>
 
