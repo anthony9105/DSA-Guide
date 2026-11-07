@@ -33,7 +33,7 @@
 | 3 | [383. Ransom Note](./Hashmaps%20and%20Sets/3%20Ransom%20Note/README.md) | 🟢 Easy | Strings |
 | 4 | [242. Valid Anogram](./Hashmaps%20and%20Sets/4%20Valid%20Anagram/README.md) | 🟢 Easy | Strings |
 | 5 | [1189. Maximum Number of Balloons](./Hashmaps%20and%20Sets/5%20Maximum%20Number%20of%20Balloons/README.md) | 🟢 Easy | Strings |
-| 6 | [1. Two Sum]() | 🟡 Medium |  |
+| 6 | [1. Two Sum](./Hashmaps%20and%20Sets/6%20Two%20Sum/README.md) | 🟡 Medium |  |
 | 7 | [36. Valid Sudoku]() | 🟡 Medium |  |
 | 8 | [49. Group Anagrams]() | 🟡 Medium |  |
 | 9 | [169. Majority Element]() | 🟢 Easy |  |
